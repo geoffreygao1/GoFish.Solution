@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ProjectName.Controllers
+namespace GoFish.Controllers
 {
-  public class HomeController : Controller
+  public class PlayersController : Controller
   {
     //[Route("path")]
     //public string Hello() { return "Hello friend!"; }
