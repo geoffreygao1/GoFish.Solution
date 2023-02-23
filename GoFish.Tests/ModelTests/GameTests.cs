@@ -9,9 +9,9 @@ namespace GoFish.Tests
   public class GameTests
   {
     [TestMethod]
-    public void DeckConstructor_CreatesInstanceOfDeck_Deck()
+    public void GameConstructor_CreatesInstanceOfGame_Game()
     {
-      Game newGame = new Game();
+      Game newGame = new Game("Player 1");
       Assert.AreEqual(typeof(Game), newGame.GetType());
     }
   }

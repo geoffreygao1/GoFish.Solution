@@ -5,16 +5,16 @@ public class Player
   public string Name { get; set; }
   public int Score { get; set; }
   public List<Card> Hand { get; set; }
+  public List<(Card, Card)> Pairs { get; set; }
   public Player(string name)
   {
     Name = name;
     Score = 0;
     Hand = new List<Card>() { };
   }
-  public List<(Card, Card)> PairUp()
+  public void PairUp()
   {
     List<Card> temp_hand = new List<Card>() { };
-    List<(Card, Card)> pairs = new List<(Card, Card)>() { };
 
     while (Hand.Count > 0)
     {
@@ -27,7 +27,7 @@ public class Player
         {
           Card card_b = Hand[i];
           Hand.RemoveAt(i);
-          pairs.Add((card_a, card_b));
+          Pairs.Add((card_a, card_b));
           found = true;
           break;
         }
@@ -38,6 +38,6 @@ public class Player
       }
     }
     Hand = temp_hand;
-    return pairs;
+    Score = Pairs.Count;
   }
 }

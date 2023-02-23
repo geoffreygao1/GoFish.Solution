@@ -49,9 +49,9 @@ namespace GoFish.Tests
       newPlayer.Hand.Add(card3);
       newPlayer.Hand.Add(card4);
       newPlayer.Hand.Add(card5);
-      List<(Card, Card)> outputPair = newPlayer.PairUp();
-      Assert.AreEqual("   Ace of Hearts", outputPair[0].Item1.ToString());
-      Assert.AreEqual("   Ace of Diamonds", outputPair[0].Item2.ToString());
+      newPlayer.PairUp();
+      Assert.AreEqual("   Ace of Hearts", newPlayer.Pairs[0].Item1.ToString());
+      Assert.AreEqual("   Ace of Diamonds", newPlayer.Pairs[0].Item2.ToString());
     }
 
   }
