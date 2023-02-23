@@ -41,32 +41,32 @@ public class Game
   {
     bool found = false;
     Player currentPlayer = Players[(_turnCounter) % Players.Count];
-    List<Player> targetPlayers = Players.Where(x => x.Name != currentPlayer.Name).ToList();
-    foreach (Player targetPlayer in targetPlayers)
+    Player targetPlayer = Players[(_turnCounter + 1) % Players.Count];
+
+    foreach (Card x in targetPlayer.Hand)
     {
-      foreach (Card x in targetPlayer.Hand)
+      if (x.Rank == cardGuess)
       {
-        if (x.Rank == cardGuess)
-        {
-          Players[(_turnCounter) % Players.Count].Hand.Add(x);
-          targetPlayer.Hand.Remove(x);
-          currentPlayer.PairUp();
-          found = true;
-          break;
-        }
+        currentPlayer.Hand.Add(x);
+        targetPlayer.Hand.Remove(x);
+        currentPlayer.PairUp();
+        found = true;
+        break;
       }
     }
+
     if (!found)
     {
+      DrawCard(currentPlayer);
+      currentPlayer.PairUp();
       _turnCounter++;
     }
   }
+
   public void DrawCard(Player player)
   {
     player.Hand.Add(gameDeck.Cards[0]);
     gameDeck.Cards.RemoveAt(0);
   }
-
-
 
 }
